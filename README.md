@@ -39,7 +39,11 @@ Via `.textlintrc`(Recommended)
         {
           "pattern": "ふいんき",
           "message": "「ふいんき」ではなく「ふんいき」です。"
-        }
+        },
+        {
+          "pattern": "うる覚え,布団をひく",
+          "message": "誤った言葉です。"
+        },
       ]
     }
   }

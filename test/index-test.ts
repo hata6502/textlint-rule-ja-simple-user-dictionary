@@ -19,6 +19,10 @@ tester.run(
               pattern: "ふいんき",
               message: "「ふいんき」ではなく「ふんいき」です。",
             },
+            {
+              pattern: "うる覚え,布団をひく",
+              message: "誤った言葉です。",
+            },
           ],
         },
       },
@@ -48,6 +52,21 @@ tester.run(
             line: 1,
             column: 1,
           },
+        ],
+      },
+      {
+        text: "うる覚えですが布団をひくという言葉があったはずです。",
+        errors: [
+          {
+            message: "誤った言葉です。",
+            line: 1,
+            column: 1,
+          },
+          {
+            message: "誤った言葉です。",
+            line: 1,
+            column: 8,
+          }
         ],
       },
     ],
