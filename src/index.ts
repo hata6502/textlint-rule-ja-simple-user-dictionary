@@ -17,32 +17,35 @@ const reporter: TextlintRuleReporter = (context, userOptions) => {
       const surfaceForms = tokens.map(({ surface_form }) => surface_form);
 
       options.dictionary.forEach(({ pattern, message }) => {
-        let currentPattern = pattern;
-        let index = 0;
+        let splittedPattern = pattern.split(',');
+        for(let currentPattern of splittedPattern) {
+          let duplicatedCurrentPattern = currentPattern;
+          let index = 0;
 
-        surfaceForms.forEach((surfaceForm) => {
-          const surfaceFormLength = surfaceForm.length;
+          surfaceForms.forEach((surfaceForm) => {
+            const surfaceFormLength = surfaceForm.length;
 
-          index += surfaceFormLength;
+            index += surfaceFormLength;
 
-          if (currentPattern.startsWith(surfaceForm)) {
-            currentPattern = currentPattern.slice(surfaceFormLength);
+            if (duplicatedCurrentPattern.startsWith(surfaceForm)) {
+              duplicatedCurrentPattern = duplicatedCurrentPattern.slice(surfaceFormLength);
 
-            if (currentPattern !== "") {
-              return;
+              if (duplicatedCurrentPattern !== "") {
+                return;
+              }
+
+              const ruleError = new RuleError(
+                message ??
+                  `「${currentPattern}」はユーザー辞書によって禁止されています。`,
+                { index: index - currentPattern.length }
+              );
+
+              report(node, ruleError);
             }
 
-            const ruleError = new RuleError(
-              message ??
-                `「${pattern}」はユーザー辞書によって禁止されています。`,
-              { index: index - pattern.length }
-            );
-
-            report(node, ruleError);
-          }
-
-          currentPattern = pattern;
-        });
+            duplicatedCurrentPattern = currentPattern;
+          });
+        }
       });
     },
   };
