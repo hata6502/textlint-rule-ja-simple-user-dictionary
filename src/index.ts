@@ -33,7 +33,7 @@ const reporter: TextlintRuleReporter = (context, userOptions) => {
             }
 
             const ruleError = new RuleError(
-              message ??
+              message ||
                 `「${pattern}」はユーザー辞書によって禁止されています。`,
               { index: index - pattern.length }
             );
