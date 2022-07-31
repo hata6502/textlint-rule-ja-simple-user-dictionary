@@ -9,6 +9,9 @@
 正規表現を使わずに辞書を定義します。
 なぜ辞書に登録されているか、説明を書くこともできます。
 
+Google Spread Sheetで辞書を管理するのもおすすめです。
+https://github.com/hata6502/textlint-rule-ja-simple-user-dictionary/pull/5#issuecomment-1200366919
+
 ### 文脈に合ったマッチング
 
 形態素解析を行い、単語単位で入力文章と辞書データをマッチングします。
