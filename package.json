@@ -1,6 +1,6 @@
 {
   "name": "textlint-rule-ja-simple-user-dictionary",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "シンプルなユーザー辞書をもとに校正するtextlintルール。",
   "keywords": [
     "textlintrule"
